@@ -19,6 +19,11 @@ import (
 type EstadosCompartimentoEstado int32
 
 // List of EstadosCompartimentoEstado
+const (
+	_0 EstadosCompartimentoEstado = 0
+	_1 EstadosCompartimentoEstado = 1
+	_2 EstadosCompartimentoEstado = 2
+)
 
 var allowedEstadosCompartimentoEstadoEnumValues = []EstadosCompartimentoEstado{
 	0,

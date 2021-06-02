@@ -18,6 +18,12 @@ import (
 // TipoOrigem the model 'TipoOrigem'
 type TipoOrigem int32
 
+// List of TipoOrigem
+const (
+	_0 TipoOrigem = 0
+	_1 TipoOrigem = 1
+)
+
 var allowedTipoOrigemEnumValues = []TipoOrigem{
 	0,
 	1,

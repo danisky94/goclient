@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **int64** |  | [optional] 
-**RefCompartimento** | Pointer to **NullableInt64** |  | [optional] 
 **Endereco** | Pointer to **NullableString** |  | [optional] 
 **Canal** | Pointer to **NullableInt32** |  | [optional] 
 
@@ -53,41 +52,6 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### GetRefCompartimento
-
-`func (o *FechaduraDTO) GetRefCompartimento() int64`
-
-GetRefCompartimento returns the RefCompartimento field if non-nil, zero value otherwise.
-
-### GetRefCompartimentoOk
-
-`func (o *FechaduraDTO) GetRefCompartimentoOk() (*int64, bool)`
-
-GetRefCompartimentoOk returns a tuple with the RefCompartimento field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRefCompartimento
-
-`func (o *FechaduraDTO) SetRefCompartimento(v int64)`
-
-SetRefCompartimento sets RefCompartimento field to given value.
-
-### HasRefCompartimento
-
-`func (o *FechaduraDTO) HasRefCompartimento() bool`
-
-HasRefCompartimento returns a boolean if a field has been set.
-
-### SetRefCompartimentoNil
-
-`func (o *FechaduraDTO) SetRefCompartimentoNil(b bool)`
-
- SetRefCompartimentoNil sets the value for RefCompartimento to be an explicit nil
-
-### UnsetRefCompartimento
-`func (o *FechaduraDTO) UnsetRefCompartimento()`
-
-UnsetRefCompartimento ensures that no value is present for RefCompartimento, not even an explicit nil
 ### GetEndereco
 
 `func (o *FechaduraDTO) GetEndereco() string`

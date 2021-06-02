@@ -475,107 +475,6 @@ func (a *GvmApiService) GvmsGvmGetGvmGetExecute(r ApiGvmsGvmGetGvmGetRequest) (G
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGvmsGvmGetJwtTestePostRequest struct {
-	ctx _context.Context
-	ApiService *GvmApiService
-}
-
-
-func (r ApiGvmsGvmGetJwtTestePostRequest) Execute() (GvmResultado, *_nethttp.Response, error) {
-	return r.ApiService.GvmsGvmGetJwtTestePostExecute(r)
-}
-
-/*
- * GvmsGvmGetJwtTestePost Method for GvmsGvmGetJwtTestePost
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGvmsGvmGetJwtTestePostRequest
- */
-func (a *GvmApiService) GvmsGvmGetJwtTestePost(ctx _context.Context) ApiGvmsGvmGetJwtTestePostRequest {
-	return ApiGvmsGvmGetJwtTestePostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-/*
- * Execute executes the request
- * @return GvmResultado
- */
-func (a *GvmApiService) GvmsGvmGetJwtTestePostExecute(r ApiGvmsGvmGetJwtTestePostRequest) (GvmResultado, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  GvmResultado
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GvmApiService.GvmsGvmGetJwtTestePost")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/Gvms/Gvm/GetJwtTeste"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json", "text/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiGvmsGvmGetVendaGetRequest struct {
 	ctx _context.Context
 	ApiService *GvmApiService
@@ -805,15 +704,25 @@ func (a *GvmApiService) GvmsGvmLoginPostExecute(r ApiGvmsGvmLoginPostRequest) (S
 type ApiGvmsGvmRegistarEventoPostRequest struct {
 	ctx _context.Context
 	ApiService *GvmApiService
-	eventoDTO *EventoDTO
+	tipoEvento *TiposTipoEvento
+	msg *string
+	refCompartimento *int64
 }
 
-func (r ApiGvmsGvmRegistarEventoPostRequest) EventoDTO(eventoDTO EventoDTO) ApiGvmsGvmRegistarEventoPostRequest {
-	r.eventoDTO = &eventoDTO
+func (r ApiGvmsGvmRegistarEventoPostRequest) TipoEvento(tipoEvento TiposTipoEvento) ApiGvmsGvmRegistarEventoPostRequest {
+	r.tipoEvento = &tipoEvento
+	return r
+}
+func (r ApiGvmsGvmRegistarEventoPostRequest) Msg(msg string) ApiGvmsGvmRegistarEventoPostRequest {
+	r.msg = &msg
+	return r
+}
+func (r ApiGvmsGvmRegistarEventoPostRequest) RefCompartimento(refCompartimento int64) ApiGvmsGvmRegistarEventoPostRequest {
+	r.refCompartimento = &refCompartimento
 	return r
 }
 
-func (r ApiGvmsGvmRegistarEventoPostRequest) Execute() (EventoDTOResultado, *_nethttp.Response, error) {
+func (r ApiGvmsGvmRegistarEventoPostRequest) Execute() (Resultado, *_nethttp.Response, error) {
 	return r.ApiService.GvmsGvmRegistarEventoPostExecute(r)
 }
 
@@ -831,16 +740,16 @@ func (a *GvmApiService) GvmsGvmRegistarEventoPost(ctx _context.Context) ApiGvmsG
 
 /*
  * Execute executes the request
- * @return EventoDTOResultado
+ * @return Resultado
  */
-func (a *GvmApiService) GvmsGvmRegistarEventoPostExecute(r ApiGvmsGvmRegistarEventoPostRequest) (EventoDTOResultado, *_nethttp.Response, error) {
+func (a *GvmApiService) GvmsGvmRegistarEventoPostExecute(r ApiGvmsGvmRegistarEventoPostRequest) (Resultado, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  EventoDTOResultado
+		localVarReturnValue  Resultado
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GvmApiService.GvmsGvmRegistarEventoPost")
@@ -854,8 +763,17 @@ func (a *GvmApiService) GvmsGvmRegistarEventoPostExecute(r ApiGvmsGvmRegistarEve
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.tipoEvento != nil {
+		localVarQueryParams.Add("tipoEvento", parameterToString(*r.tipoEvento, ""))
+	}
+	if r.msg != nil {
+		localVarQueryParams.Add("msg", parameterToString(*r.msg, ""))
+	}
+	if r.refCompartimento != nil {
+		localVarQueryParams.Add("refCompartimento", parameterToString(*r.refCompartimento, ""))
+	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json-patch+json", "application/json", "text/json", "application/_*+json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -871,8 +789,6 @@ func (a *GvmApiService) GvmsGvmRegistarEventoPostExecute(r ApiGvmsGvmRegistarEve
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.eventoDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -921,7 +837,7 @@ func (r ApiGvmsGvmRegistarRaspberryPiPostRequest) Identificador(identificador st
 	return r
 }
 
-func (r ApiGvmsGvmRegistarRaspberryPiPostRequest) Execute() (RaspberryPiDTOResultado, *_nethttp.Response, error) {
+func (r ApiGvmsGvmRegistarRaspberryPiPostRequest) Execute() (Resultado, *_nethttp.Response, error) {
 	return r.ApiService.GvmsGvmRegistarRaspberryPiPostExecute(r)
 }
 
@@ -939,16 +855,16 @@ func (a *GvmApiService) GvmsGvmRegistarRaspberryPiPost(ctx _context.Context) Api
 
 /*
  * Execute executes the request
- * @return RaspberryPiDTOResultado
+ * @return Resultado
  */
-func (a *GvmApiService) GvmsGvmRegistarRaspberryPiPostExecute(r ApiGvmsGvmRegistarRaspberryPiPostRequest) (RaspberryPiDTOResultado, *_nethttp.Response, error) {
+func (a *GvmApiService) GvmsGvmRegistarRaspberryPiPostExecute(r ApiGvmsGvmRegistarRaspberryPiPostRequest) (Resultado, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  RaspberryPiDTOResultado
+		localVarReturnValue  Resultado
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GvmApiService.GvmsGvmRegistarRaspberryPiPost")

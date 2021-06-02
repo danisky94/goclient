@@ -18,7 +18,11 @@ import (
 // TipoCompartimento the model 'TipoCompartimento'
 type TipoCompartimento int32
 
-
+// List of TipoCompartimento
+const (
+	_0 TipoCompartimento = 0
+	_1 TipoCompartimento = 1
+)
 
 var allowedTipoCompartimentoEnumValues = []TipoCompartimento{
 	0,

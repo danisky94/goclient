@@ -8,7 +8,6 @@ Method | HTTP request | Description
 [**GvmsGvmDownloadImageGet**](GvmApi.md#GvmsGvmDownloadImageGet) | **Get** /Gvms/Gvm/DownloadImage | 
 [**GvmsGvmFinalizarVendaGet**](GvmApi.md#GvmsGvmFinalizarVendaGet) | **Get** /Gvms/Gvm/FinalizarVenda | 
 [**GvmsGvmGetGvmGet**](GvmApi.md#GvmsGvmGetGvmGet) | **Get** /Gvms/Gvm/GetGvm | 
-[**GvmsGvmGetJwtTestePost**](GvmApi.md#GvmsGvmGetJwtTestePost) | **Post** /Gvms/Gvm/GetJwtTeste | 
 [**GvmsGvmGetVendaGet**](GvmApi.md#GvmsGvmGetVendaGet) | **Get** /Gvms/Gvm/GetVenda | 
 [**GvmsGvmLoginPost**](GvmApi.md#GvmsGvmLoginPost) | **Post** /Gvms/Gvm/Login | 
 [**GvmsGvmRegistarEventoPost**](GvmApi.md#GvmsGvmRegistarEventoPost) | **Post** /Gvms/Gvm/RegistarEvento | 
@@ -276,65 +275,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GvmsGvmGetJwtTestePost
-
-> GvmResultado GvmsGvmGetJwtTestePost(ctx).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.GvmApi.GvmsGvmGetJwtTestePost(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GvmApi.GvmsGvmGetJwtTestePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GvmsGvmGetJwtTestePost`: GvmResultado
-    fmt.Fprintf(os.Stdout, "Response from `GvmApi.GvmsGvmGetJwtTestePost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGvmsGvmGetJwtTestePostRequest struct via the builder pattern
-
-
-### Return type
-
-[**GvmResultado**](GvmResultado.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GvmsGvmGetVendaGet
 
 > CustomVendaResultado GvmsGvmGetVendaGet(ctx).TokenVenda(tokenVenda).Execute()
@@ -467,7 +407,7 @@ Name | Type | Description  | Notes
 
 ## GvmsGvmRegistarEventoPost
 
-> EventoDTOResultado GvmsGvmRegistarEventoPost(ctx).EventoDTO(eventoDTO).Execute()
+> Resultado GvmsGvmRegistarEventoPost(ctx).TipoEvento(tipoEvento).Msg(msg).RefCompartimento(refCompartimento).Execute()
 
 
 
@@ -484,16 +424,18 @@ import (
 )
 
 func main() {
-    eventoDTO := *openapiclient.NewEventoDTO() // EventoDTO |  (optional)
+    tipoEvento := openapiclient.TiposTipoEvento(0) // TiposTipoEvento |  (optional)
+    msg := "msg_example" // string |  (optional) (default to "")
+    refCompartimento := int64(789) // int64 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.GvmApi.GvmsGvmRegistarEventoPost(context.Background()).EventoDTO(eventoDTO).Execute()
+    resp, r, err := api_client.GvmApi.GvmsGvmRegistarEventoPost(context.Background()).TipoEvento(tipoEvento).Msg(msg).RefCompartimento(refCompartimento).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GvmApi.GvmsGvmRegistarEventoPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GvmsGvmRegistarEventoPost`: EventoDTOResultado
+    // response from `GvmsGvmRegistarEventoPost`: Resultado
     fmt.Fprintf(os.Stdout, "Response from `GvmApi.GvmsGvmRegistarEventoPost`: %v\n", resp)
 }
 ```
@@ -509,11 +451,13 @@ Other parameters are passed through a pointer to a apiGvmsGvmRegistarEventoPostR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventoDTO** | [**EventoDTO**](EventoDTO.md) |  | 
+ **tipoEvento** | [**TiposTipoEvento**](TiposTipoEvento.md) |  | 
+ **msg** | **string** |  | [default to &quot;&quot;]
+ **refCompartimento** | **int64** |  | 
 
 ### Return type
 
-[**EventoDTOResultado**](EventoDTOResultado.md)
+[**Resultado**](Resultado.md)
 
 ### Authorization
 
@@ -521,7 +465,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+- **Content-Type**: Not defined
 - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -531,7 +475,7 @@ Name | Type | Description  | Notes
 
 ## GvmsGvmRegistarRaspberryPiPost
 
-> RaspberryPiDTOResultado GvmsGvmRegistarRaspberryPiPost(ctx).Identificador(identificador).Execute()
+> Resultado GvmsGvmRegistarRaspberryPiPost(ctx).Identificador(identificador).Execute()
 
 
 
@@ -557,7 +501,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GvmApi.GvmsGvmRegistarRaspberryPiPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GvmsGvmRegistarRaspberryPiPost`: RaspberryPiDTOResultado
+    // response from `GvmsGvmRegistarRaspberryPiPost`: Resultado
     fmt.Fprintf(os.Stdout, "Response from `GvmApi.GvmsGvmRegistarRaspberryPiPost`: %v\n", resp)
 }
 ```
@@ -577,7 +521,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RaspberryPiDTOResultado**](RaspberryPiDTOResultado.md)
+[**Resultado**](Resultado.md)
 
 ### Authorization
 

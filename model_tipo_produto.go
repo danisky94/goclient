@@ -18,6 +18,12 @@ import (
 // TipoProduto the model 'TipoProduto'
 type TipoProduto int32
 
+// List of TipoProduto
+const (
+	_0 TipoProduto = 0
+	_1 TipoProduto = 1
+)
+
 var allowedTipoProdutoEnumValues = []TipoProduto{
 	0,
 	1,

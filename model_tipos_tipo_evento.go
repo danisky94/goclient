@@ -18,6 +18,17 @@ import (
 // TiposTipoEvento the model 'TiposTipoEvento'
 type TiposTipoEvento int32
 
+// List of TiposTipoEvento
+const (
+	_0 TiposTipoEvento = 0
+	_1 TiposTipoEvento = 1
+	_2 TiposTipoEvento = 2
+	_3 TiposTipoEvento = 3
+	_4 TiposTipoEvento = 4
+	_5 TiposTipoEvento = 5
+	_6 TiposTipoEvento = 6
+	_7 TiposTipoEvento = 7
+)
 
 var allowedTiposTipoEventoEnumValues = []TiposTipoEvento{
 	0,

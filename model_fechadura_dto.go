@@ -17,7 +17,6 @@ import (
 // FechaduraDTO struct for FechaduraDTO
 type FechaduraDTO struct {
 	Id *int64 `json:"id,omitempty"`
-	RefCompartimento NullableInt64 `json:"refCompartimento,omitempty"`
 	Endereco NullableString `json:"endereco,omitempty"`
 	Canal NullableInt32 `json:"canal,omitempty"`
 }
@@ -69,48 +68,6 @@ func (o *FechaduraDTO) HasId() bool {
 // SetId gets a reference to the given int64 and assigns it to the Id field.
 func (o *FechaduraDTO) SetId(v int64) {
 	o.Id = &v
-}
-
-// GetRefCompartimento returns the RefCompartimento field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *FechaduraDTO) GetRefCompartimento() int64 {
-	if o == nil || o.RefCompartimento.Get() == nil {
-		var ret int64
-		return ret
-	}
-	return *o.RefCompartimento.Get()
-}
-
-// GetRefCompartimentoOk returns a tuple with the RefCompartimento field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *FechaduraDTO) GetRefCompartimentoOk() (*int64, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return o.RefCompartimento.Get(), o.RefCompartimento.IsSet()
-}
-
-// HasRefCompartimento returns a boolean if a field has been set.
-func (o *FechaduraDTO) HasRefCompartimento() bool {
-	if o != nil && o.RefCompartimento.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRefCompartimento gets a reference to the given NullableInt64 and assigns it to the RefCompartimento field.
-func (o *FechaduraDTO) SetRefCompartimento(v int64) {
-	o.RefCompartimento.Set(&v)
-}
-// SetRefCompartimentoNil sets the value for RefCompartimento to be an explicit nil
-func (o *FechaduraDTO) SetRefCompartimentoNil() {
-	o.RefCompartimento.Set(nil)
-}
-
-// UnsetRefCompartimento ensures that no value is present for RefCompartimento, not even an explicit nil
-func (o *FechaduraDTO) UnsetRefCompartimento() {
-	o.RefCompartimento.Unset()
 }
 
 // GetEndereco returns the Endereco field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -201,9 +158,6 @@ func (o FechaduraDTO) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
-	}
-	if o.RefCompartimento.IsSet() {
-		toSerialize["refCompartimento"] = o.RefCompartimento.Get()
 	}
 	if o.Endereco.IsSet() {
 		toSerialize["endereco"] = o.Endereco.Get()

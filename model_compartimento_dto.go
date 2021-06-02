@@ -18,11 +18,10 @@ import (
 type CompartimentoDTO struct {
 	Id *int64 `json:"id,omitempty"`
 	Numero NullableString `json:"numero,omitempty"`
-	RefGVM NullableInt64 `json:"refGVM,omitempty"`
-	RefProduto NullableInt64 `json:"refProduto,omitempty"`
 	Tipo *TipoCompartimento `json:"tipo,omitempty"`
 	Ativo *bool `json:"ativo,omitempty"`
 	Fechaduras []FechaduraDTO `json:"fechaduras,omitempty"`
+	Leds []LedDTO `json:"leds,omitempty"`
 }
 
 // NewCompartimentoDTO instantiates a new CompartimentoDTO object
@@ -114,90 +113,6 @@ func (o *CompartimentoDTO) SetNumeroNil() {
 // UnsetNumero ensures that no value is present for Numero, not even an explicit nil
 func (o *CompartimentoDTO) UnsetNumero() {
 	o.Numero.Unset()
-}
-
-// GetRefGVM returns the RefGVM field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CompartimentoDTO) GetRefGVM() int64 {
-	if o == nil || o.RefGVM.Get() == nil {
-		var ret int64
-		return ret
-	}
-	return *o.RefGVM.Get()
-}
-
-// GetRefGVMOk returns a tuple with the RefGVM field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CompartimentoDTO) GetRefGVMOk() (*int64, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return o.RefGVM.Get(), o.RefGVM.IsSet()
-}
-
-// HasRefGVM returns a boolean if a field has been set.
-func (o *CompartimentoDTO) HasRefGVM() bool {
-	if o != nil && o.RefGVM.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRefGVM gets a reference to the given NullableInt64 and assigns it to the RefGVM field.
-func (o *CompartimentoDTO) SetRefGVM(v int64) {
-	o.RefGVM.Set(&v)
-}
-// SetRefGVMNil sets the value for RefGVM to be an explicit nil
-func (o *CompartimentoDTO) SetRefGVMNil() {
-	o.RefGVM.Set(nil)
-}
-
-// UnsetRefGVM ensures that no value is present for RefGVM, not even an explicit nil
-func (o *CompartimentoDTO) UnsetRefGVM() {
-	o.RefGVM.Unset()
-}
-
-// GetRefProduto returns the RefProduto field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CompartimentoDTO) GetRefProduto() int64 {
-	if o == nil || o.RefProduto.Get() == nil {
-		var ret int64
-		return ret
-	}
-	return *o.RefProduto.Get()
-}
-
-// GetRefProdutoOk returns a tuple with the RefProduto field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CompartimentoDTO) GetRefProdutoOk() (*int64, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return o.RefProduto.Get(), o.RefProduto.IsSet()
-}
-
-// HasRefProduto returns a boolean if a field has been set.
-func (o *CompartimentoDTO) HasRefProduto() bool {
-	if o != nil && o.RefProduto.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRefProduto gets a reference to the given NullableInt64 and assigns it to the RefProduto field.
-func (o *CompartimentoDTO) SetRefProduto(v int64) {
-	o.RefProduto.Set(&v)
-}
-// SetRefProdutoNil sets the value for RefProduto to be an explicit nil
-func (o *CompartimentoDTO) SetRefProdutoNil() {
-	o.RefProduto.Set(nil)
-}
-
-// UnsetRefProduto ensures that no value is present for RefProduto, not even an explicit nil
-func (o *CompartimentoDTO) UnsetRefProduto() {
-	o.RefProduto.Unset()
 }
 
 // GetTipo returns the Tipo field value if set, zero value otherwise.
@@ -297,6 +212,39 @@ func (o *CompartimentoDTO) SetFechaduras(v []FechaduraDTO) {
 	o.Fechaduras = v
 }
 
+// GetLeds returns the Leds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CompartimentoDTO) GetLeds() []LedDTO {
+	if o == nil  {
+		var ret []LedDTO
+		return ret
+	}
+	return o.Leds
+}
+
+// GetLedsOk returns a tuple with the Leds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CompartimentoDTO) GetLedsOk() (*[]LedDTO, bool) {
+	if o == nil || o.Leds == nil {
+		return nil, false
+	}
+	return &o.Leds, true
+}
+
+// HasLeds returns a boolean if a field has been set.
+func (o *CompartimentoDTO) HasLeds() bool {
+	if o != nil && o.Leds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLeds gets a reference to the given []LedDTO and assigns it to the Leds field.
+func (o *CompartimentoDTO) SetLeds(v []LedDTO) {
+	o.Leds = v
+}
+
 func (o CompartimentoDTO) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -304,12 +252,6 @@ func (o CompartimentoDTO) MarshalJSON() ([]byte, error) {
 	}
 	if o.Numero.IsSet() {
 		toSerialize["numero"] = o.Numero.Get()
-	}
-	if o.RefGVM.IsSet() {
-		toSerialize["refGVM"] = o.RefGVM.Get()
-	}
-	if o.RefProduto.IsSet() {
-		toSerialize["refProduto"] = o.RefProduto.Get()
 	}
 	if o.Tipo != nil {
 		toSerialize["tipo"] = o.Tipo
@@ -319,6 +261,9 @@ func (o CompartimentoDTO) MarshalJSON() ([]byte, error) {
 	}
 	if o.Fechaduras != nil {
 		toSerialize["fechaduras"] = o.Fechaduras
+	}
+	if o.Leds != nil {
+		toSerialize["leds"] = o.Leds
 	}
 	return json.Marshal(toSerialize)
 }

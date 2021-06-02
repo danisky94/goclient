@@ -6,11 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **int64** |  | [optional] 
 **Numero** | Pointer to **NullableString** |  | [optional] 
-**RefGVM** | Pointer to **NullableInt64** |  | [optional] 
-**RefProduto** | Pointer to **NullableInt64** |  | [optional] 
 **Tipo** | Pointer to [**TipoCompartimento**](TipoCompartimento.md) |  | [optional] 
 **Ativo** | Pointer to **bool** |  | [optional] 
 **Fechaduras** | Pointer to [**[]FechaduraDTO**](FechaduraDTO.md) |  | [optional] 
+**Leds** | Pointer to [**[]LedDTO**](LedDTO.md) |  | [optional] 
 
 ## Methods
 
@@ -91,76 +90,6 @@ HasNumero returns a boolean if a field has been set.
 `func (o *CompartimentoDTO) UnsetNumero()`
 
 UnsetNumero ensures that no value is present for Numero, not even an explicit nil
-### GetRefGVM
-
-`func (o *CompartimentoDTO) GetRefGVM() int64`
-
-GetRefGVM returns the RefGVM field if non-nil, zero value otherwise.
-
-### GetRefGVMOk
-
-`func (o *CompartimentoDTO) GetRefGVMOk() (*int64, bool)`
-
-GetRefGVMOk returns a tuple with the RefGVM field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRefGVM
-
-`func (o *CompartimentoDTO) SetRefGVM(v int64)`
-
-SetRefGVM sets RefGVM field to given value.
-
-### HasRefGVM
-
-`func (o *CompartimentoDTO) HasRefGVM() bool`
-
-HasRefGVM returns a boolean if a field has been set.
-
-### SetRefGVMNil
-
-`func (o *CompartimentoDTO) SetRefGVMNil(b bool)`
-
- SetRefGVMNil sets the value for RefGVM to be an explicit nil
-
-### UnsetRefGVM
-`func (o *CompartimentoDTO) UnsetRefGVM()`
-
-UnsetRefGVM ensures that no value is present for RefGVM, not even an explicit nil
-### GetRefProduto
-
-`func (o *CompartimentoDTO) GetRefProduto() int64`
-
-GetRefProduto returns the RefProduto field if non-nil, zero value otherwise.
-
-### GetRefProdutoOk
-
-`func (o *CompartimentoDTO) GetRefProdutoOk() (*int64, bool)`
-
-GetRefProdutoOk returns a tuple with the RefProduto field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRefProduto
-
-`func (o *CompartimentoDTO) SetRefProduto(v int64)`
-
-SetRefProduto sets RefProduto field to given value.
-
-### HasRefProduto
-
-`func (o *CompartimentoDTO) HasRefProduto() bool`
-
-HasRefProduto returns a boolean if a field has been set.
-
-### SetRefProdutoNil
-
-`func (o *CompartimentoDTO) SetRefProdutoNil(b bool)`
-
- SetRefProdutoNil sets the value for RefProduto to be an explicit nil
-
-### UnsetRefProduto
-`func (o *CompartimentoDTO) UnsetRefProduto()`
-
-UnsetRefProduto ensures that no value is present for RefProduto, not even an explicit nil
 ### GetTipo
 
 `func (o *CompartimentoDTO) GetTipo() TipoCompartimento`
@@ -246,6 +175,41 @@ HasFechaduras returns a boolean if a field has been set.
 `func (o *CompartimentoDTO) UnsetFechaduras()`
 
 UnsetFechaduras ensures that no value is present for Fechaduras, not even an explicit nil
+### GetLeds
+
+`func (o *CompartimentoDTO) GetLeds() []LedDTO`
+
+GetLeds returns the Leds field if non-nil, zero value otherwise.
+
+### GetLedsOk
+
+`func (o *CompartimentoDTO) GetLedsOk() (*[]LedDTO, bool)`
+
+GetLedsOk returns a tuple with the Leds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLeds
+
+`func (o *CompartimentoDTO) SetLeds(v []LedDTO)`
+
+SetLeds sets Leds field to given value.
+
+### HasLeds
+
+`func (o *CompartimentoDTO) HasLeds() bool`
+
+HasLeds returns a boolean if a field has been set.
+
+### SetLedsNil
+
+`func (o *CompartimentoDTO) SetLedsNil(b bool)`
+
+ SetLedsNil sets the value for Leds to be an explicit nil
+
+### UnsetLeds
+`func (o *CompartimentoDTO) UnsetLeds()`
+
+UnsetLeds ensures that no value is present for Leds, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
